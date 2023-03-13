@@ -1,7 +1,14 @@
 <script setup>
 import {defineProps} from 'vue'
+import { useRouter } from 'vue-router';
 
 const {quiz} = defineProps(['quiz'])
+
+const router = useRouter()
+
+const navigateThroughQuiz = () =>{
+    router.push(`quizes/${quiz.id}`)
+}
 
 //console.log('quiz')
 
@@ -9,7 +16,7 @@ const {quiz} = defineProps(['quiz'])
 
 <template>
     <div>
-        <div class="card">
+        <div class="card" @click="navigateThroughQuiz">
             <img :src="quiz.image" alt="No Image">
             <div class="card-text">
               <h2>{{ quiz.name }}</h2>
